@@ -1,0 +1,9 @@
+include LICENSE
+include MANIFEST.in
+include README.rst
+include HISTORY.rst
+include requirements.txt
+include setup.py
+include setup.cfg
+
+recursive-include brief *.py
