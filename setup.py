@@ -49,6 +49,11 @@ setup(
     ),
     url='https://github.com/willkg/project-brief',
     tests_requires=['pytest'],
+    install_requires=[
+        'bugzilla',
+        'github3.py',
+        'requests',
+    ],
     packages=[
         'brief',
     ],
