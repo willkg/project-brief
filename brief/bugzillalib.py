@@ -32,8 +32,8 @@ class BugzillaBrief(bugzilla.Bugzilla):
         """Retrieves summary of all bugs created between two dates for a given product
 
         :arg str product: the product to look at
-        :arg from_date: the from date
-        :arg to_date: the to date
+        :arg from_date: greater than or equal to this date
+        :arg to_date: less than or equal to this date
 
         :returns: dict with "count", "creator_count", and "bugs" keys
 
@@ -44,7 +44,7 @@ class BugzillaBrief(bugzilla.Bugzilla):
             {'o1': 'greaterthaneq'},
             {'v1': dt_to_str(from_date)},
             {'f2': 'creation_ts'},
-            {'o2': 'lessthan'},
+            {'o2': 'lessthaneq'},
             {'v2': dt_to_str(to_date)},
         ]
         resp = self.search_bugs(terms=terms)
