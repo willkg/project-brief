@@ -58,10 +58,13 @@ class GitHubBrief:
             if not pr.merged_at:
                 continue
 
-            if to_date <= dt_to_str(pr.merged_at):
-                break
+            if dt_to_str(pr.merged_at) > to_date:
+                # Outside the range, so continue
+                continue
 
-            if from_date > dt_to_str(pr.merged_at):
+            if dt_to_str(pr.merged_at) < from_date:
+                # Outside the range, but since PRs are ordered by updated descending, we
+                # continue another N past the from_date and then break
                 if past_from_date > N:
                     break
                 past_from_date += 1
